@@ -11,13 +11,12 @@ import csv, re, operator
 app = Flask(__name__)
 
 person = {
-    'first_name': 'Nohossat',
-    'last_name' : 'TRAORE',
-    'address' : '9 rue Léon Giraud · PARIS · FRANCE',
-    'job': 'Web developer',
-    'tel': '0678282923',
-    'email': 'nohossat.tra@yahoo.com',
-    'description' : 'Suite à une expérience internationale en développement web et dans le domaine des arts, l’impact de l’intelligence artificielle dans nos vies me surprend de jour en jour. \n Aujourd’hui, je souhaite changer de cap et comprendre les secrets que recèlent nos données. J’aimerais mettre à profit ces découvertes au service des entreprises/associations à dimension sociale.',
+    'name': '何岳静',
+    'address' : '湖北荆州',
+    'job': '软件设计师',
+    'tel': '15355132454',
+    'email': '64656738@qq.com',
+    'description' : '忠实诚信,讲原则，说到做到，决不推卸责任；有自制力，做事情始终坚持有始有终，从不半途而废；会用100%的热情和精力投入到工作中；平易近人。为人诚恳,性格开朗,积极进取,适应力强、勤奋好学、脚踏实地，有较强的团队精神,工作积极进取,态度认真。',
     'social_media' : [
         {
             'link': 'https://www.facebook.com/nono',
@@ -39,45 +38,42 @@ person = {
     'img': 'img/img_nono.jpg',
     'experiences' : [
         {
-            'title' : 'Web Developer',
-            'company': 'AZULIK',
-            'description' : 'Project manager and lead developer for several AZULIK websites.',
-            'timeframe' : 'July 2018 - November 2019'
+            'description' : '小学',
+            'timeframe' : '2006 - 2012'
         },
         {
-            'title' : 'Freelance Web Developer',
-            'company': 'Independant',
-            'description' : 'Create Wordpress websites for small and medium companies. ',
-            'timeframe' : 'February 2017 - Present'
+            'description' : '初中',
+            'timeframe' : '2012 - 2015'
         },
         {
-            'title' : 'Sharepoint Intern',
-            'company': 'ALTEN',
-            'description' : 'Help to manage a 600 Sharepoint sites platform (audit, migration to Sharepoint newer versions)',
-            'timeframe' : 'October 2015 - October 2016'
+            'description' : '高中',
+            'timeframe' : '2015 - 2018'
+        },
+        {
+            'description' : '大学',          
+            'timeframe' : '2018 - 2022'
         }
     ],
     'education' : [
         {
-            'university': 'Paris Diderot',
-            'degree': 'Projets informatiques et Startégies d\'entreprise (PISE)',
-            'description' : 'Gestion de projets IT, Audit, Programmation',
-            'mention' : 'Bien',
-            'timeframe' : '2015 - 2016'
+            'description' : '基于C语言的教务管理系统',
+            'mention' : '指导老师：柯xx',
+            'timeframe' : '2018 - 2019'
         },
         {
-            'university': 'Paris Dauphine',
-            'degree': 'Master en Management global',
-            'description' : 'Fonctions supports (Marketing, Finance, Ressources Humaines, Comptabilité)',
-            'mention' : 'Bien',
-            'timeframe' : '2015'
+            'description' : '基于Java的飞机购票系统',
+            'mention' : '指导老师：杨xx',
+            'timeframe' : '2019-2020'
         },
         {
-            'university': 'Lycée Turgot - Paris Sorbonne',
-            'degree': 'CPGE Economie & Gestion',
-            'description' : 'Préparation au concours de l\'ENS Cachan, section Economie',
-            'mention' : 'N/A',
-            'timeframe' : '2010 - 2012'
+            'description' : '基于python的网页爬取',
+            'mention' : '指导老师：李xx',
+            'timeframe' : '2019-2020'
+        },
+        {
+            'description' : '基于pygame的飞机大战小游戏',
+            'mention' : '指导老师：李xx',
+            'timeframe' : '2020 - 2021'
         }
     ],
     'programming_languages' : {
@@ -97,7 +93,7 @@ person = {
 
 @app.route('/')
 def cv(person=person):
-    return render_template('index.html', person=person)
+    return render_template('index2.html', person=person)
 
 
 
