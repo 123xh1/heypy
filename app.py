@@ -13,6 +13,7 @@ app = Flask(__name__)
 person = {
     'name': '何岳静',
     'address' : '湖北荆州',
+    'school':'湖北师范大学',
     'job': '软件设计师',
     'tel': '15355132454',
     'email': '64656738@qq.com',
@@ -104,17 +105,80 @@ def cb():
    
 @app.route('/chart')
 def index():
-	return render_template('chartsajax.html',  graphJSON=gm())
+	return render_template('chartsajax.html',  graphJSON1=gm1(),graphJSON2=gm2(),graphJSON3=gm3(),graphJSON4=gm4(),graphJSON5=gm5(),graphJSON6=gm6(),graphJSON7=gm7(),graphJSON8=gm8(),graphJSON9=gm9())
 
-def gm(country='United Kingdom'):
-	df = pd.DataFrame(px.data.gapminder())
+def gm1(borough='Brent'):
+	df = pd.read_csv('./london_murders.csv',encoding="gbk")
 
-	fig = px.line(df[df['country']==country], x="year", y="gdpPercap")
+	fig1 = px.line(df[df['borough']==borough], x="date", y="age")
 
-	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-	return graphJSON
+	graphJSON1 = json.dumps(fig1, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON1
+    
+def gm2():
+    df = pd.read_csv('./london_murders.csv',encoding="gbk")
 
+    fig2 = px.histogram(df,x="borough", y="age",color='year')
 
+    graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON2
+def gm3():
+    df = pd.read_csv('./london_murders.csv',encoding="gbk")
+
+    fig3 = px.scatter(df,x="date", y="age",color='borough')
+
+    graphJSON3 = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON3
+def gm4():
+    df = pd.read_csv('./london_murders.csv',encoding="gbk")
+
+    fig4 = px.density_contour(df,x="date", y="age")
+
+    graphJSON4 = json.dumps(fig4, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON4
+def gm5():
+    df = pd.read_csv('./london_murders.csv',encoding="gbk")
+
+    fig5 = px.box(df,x="borough", y="age",color="year", notched=True)
+
+    graphJSON5 = json.dumps(fig5, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON5
+def gm6():
+    df = pd.read_csv('./london_murders.csv',encoding="gbk")
+
+    fig6 = px.violin(df,x="borough", y="age",color="year",box=True, points="all", 
+          hover_data=df.columns)
+    graphJSON6 = json.dumps(fig6, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON6
+def gm7():
+    df = pd.read_csv('./london_murders.csv',encoding="gbk")
+
+    fig7 = px.parallel_categories(df,color="year", color_continuous_scale=px.
+            colors.sequential.Inferno)
+    graphJSON7 = json.dumps(fig7, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON7
+def gm8():
+    df = pd.read_csv('./london_murders.csv',encoding="gbk")
+
+    fig8 = px.area(df, x="borough", y="age", color="year", 
+        line_group="date")
+    graphJSON8 = json.dumps(fig8, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON8
+def gm9():
+    df = pd.read_csv('./london_murders.csv',encoding="gbk")
+    # fruit=pd.DataFrame({
+    #     "name":['0-20','20-40','40-60','60-80','80-100'],
+    #     "dat":[len(df[(df['age'] >=0 ) & (df['age'] <20)]),
+    #             len(df[(df['age'] >=20) & (df['age'] <40)]),
+    #             len(df[(df['age'] >=40 ) & (df['age'] <60)]),
+    #             len(df[(df['age'] >=60 ) & (df['age'] <80)]),
+    #             len(df[(df['age'] >=80 ) & (df['age'] <=100)]),
+    #     ]
+    #     })
+
+    fig9 = px.pie(df,  values="age",names="year")
+    graphJSON9 = json.dumps(fig9, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON9
 @app.route('/senti')
 def main():
 	text = ""

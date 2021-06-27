@@ -19,17 +19,56 @@
 </head>
 
 <body style="font-family:arial, sans-serif">
-    <h1>1952-2007年的各国GDP可视化</h1>
-    <h2>输入国家如：India或China（大写字母开头）</h2>
-    
+    <h1>伦敦各地区在2006-2011年意外死亡的年龄段</h1>
+    <h2>折线图</h2>
+    <h3>伦敦某地区意外死亡在不同时期的年龄段</h3>
+    <h2>输入伦敦各地区名称如：Camden、Croydon、Enfield等</h2>
     <input type="text" id="fname" name="fname" onchange="cb(this.value)">
-    <div id="chart" class="chart"></div>
+    <div id="chart1" class="chart1"></div>
+    <h2>直方图</h2>
+    <h3>不同地区在不同时期意外死亡年龄的和</h3>
+    <div id="chart2" class="chart2"></div>
+    <h2>散点图</h2>
+    <h3>在不同时期伦敦各地区意外死亡的年龄分布</h3>
+    <div id="chart3" class="chart3"></div>
+    <h2>密度等值线图</h2>
+    <h3>伦敦各时期意外死亡的年龄段分布情况</h3>
+    <div id="chart4" class="chart4"></div>
+    <h2>箱形图</h2>
+    <h3>描述伦敦各地方在不同时期意外死亡的年龄及离散分布情况</h3>
+    <div id="chart5" class="chart5"></div>
+    <h2>小提琴图</h2>
+    <h3>描述伦敦各地方在不同时期意外死亡的年龄和分布状态以及概率密度</h3>
+    <div id="chart6" class="chart6"></div>
+    <h2>并行类别图</h2>
+    <h3>不同时期意外死亡在不同地区对应的情况</h3>
+    <div id="chart7" class="chart7"></div>
+    <h2>堆积区域图</h2>
+    <div id="chart8" class="chart8"></div>
+    <h2>饼图</h2>
+    <h3>在不同时期伦敦各地区意外死亡年龄总和</h3>
+    <div id="chart9" class="chart9"></div>
 </body>
 
 <script>
-    d = {{ graphJSON | safe }};
-    Plotly.newPlot('chart', d, {});
+    d1 = {{ graphJSON1 | safe }};
+    Plotly.newPlot('chart1', d1, {});
+    d2 = {{ graphJSON2 | safe }};
+    Plotly.newPlot('chart2', d2, {});
+    d3 = {{ graphJSON3 | safe }};
+    Plotly.newPlot('chart3', d3, {});
+    d4 = {{ graphJSON4 | safe }};
+    Plotly.newPlot('chart4', d4, {});
+    d5 = {{ graphJSON5 | safe }};
+    Plotly.newPlot('chart5', d5, {});
+    d6 = {{ graphJSON6 | safe }};
+    Plotly.newPlot('chart6', d6, {});
+    d7 = {{ graphJSON7 | safe }};
+    Plotly.newPlot('chart7', d7, {});
+    d8 = {{ graphJSON8 | safe }};
+    Plotly.newPlot('chart8', d8, {});
+    d9 = {{ graphJSON9 | safe }};
+    Plotly.newPlot('chart9', d9, {});
 </script>
-
 
 </html>
