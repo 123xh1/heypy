@@ -166,16 +166,6 @@ def gm8():
     return graphJSON8
 def gm9():
     df = pd.read_csv('./london_murders.csv',encoding="gbk")
-    # fruit=pd.DataFrame({
-    #     "name":['0-20','20-40','40-60','60-80','80-100'],
-    #     "dat":[len(df[(df['age'] >=0 ) & (df['age'] <20)]),
-    #             len(df[(df['age'] >=20) & (df['age'] <40)]),
-    #             len(df[(df['age'] >=40 ) & (df['age'] <60)]),
-    #             len(df[(df['age'] >=60 ) & (df['age'] <80)]),
-    #             len(df[(df['age'] >=80 ) & (df['age'] <=100)]),
-    #     ]
-    #     })
-
     fig9 = px.pie(df,  values="age",names="year")
     graphJSON9 = json.dumps(fig9, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON9
